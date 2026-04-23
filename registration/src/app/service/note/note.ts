@@ -29,6 +29,12 @@ export class NoteService {
       isArchived: true
     });
   }
+  unarchiveNote(id: string) {
+  return this.api.postMethod('notes/archiveNotes', {
+    noteIdList: [id],
+    isArchived: false
+  });
+}
 
   setReminder(id: string) {
     return this.api.postMethod('notes/addUpdateReminderNotes', {

@@ -1,9 +1,29 @@
-.layout {
-  display: flex;
+/* REMOVE ANY BODY MARGIN */
+body {
+  margin: 0;
 }
 
+/* HEADER FIXED */
+app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* MAIN CONTAINER */
+.main-container {
+  display: flex;
+  height: calc(100vh - 64px); /* 👈 VERY IMPORTANT */
+}
+
+/* SIDENAV */
+app-sidenav {
+  width: 240px;
+  height: 100%;
+}
+
+/* CONTENT */
 .content {
   flex: 1;
-  background: #202124;
-  min-height: 100vh;
+  overflow-y: auto;
 }

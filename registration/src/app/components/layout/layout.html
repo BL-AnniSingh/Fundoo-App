@@ -1,9 +1,11 @@
- <app-header (menuClick)="toggleSidebar()"></app-header>
+<app-header (toggleSidebar)="toggleSidebar()"></app-header>
 
-<div class="layout">
+<div class="main-container">
+
   <app-sidenav [isOpen]="isSidebarOpen"></app-sidenav>
 
   <div class="content">
-    <router-outlet></router-outlet>  
-   </div>
-</div> 
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

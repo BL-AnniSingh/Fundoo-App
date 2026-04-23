@@ -1,23 +1,31 @@
-<div class="sidenav" [class.closed]="!isOpen">
+<div class="sidenav"
+     [class.expanded]="isHovered"
+     (mouseenter)="isHovered = true"
+     (mouseleave)="isHovered = false">
 
   <div class="item" routerLink="/dashboard/notes" routerLinkActive="active">
-    💡 <span>Notes</span>
+    <span class="material-icons">lightbulb</span>
+    <span class="text">Notes</span>
   </div>
 
   <div class="item" routerLink="/dashboard/reminders" routerLinkActive="active">
-    🔔 <span>Reminders</span>
+    <span class="material-icons">notifications</span>
+    <span class="text">Reminders</span>
   </div>
 
-  <div class="item">
-    ✏️ <span>Edit labels</span>
+  <div class="item" (click)="openEditLabels()">
+    <span class="material-icons">edit</span>
+    <span class="text">Edit labels</span>
   </div>
 
   <div class="item" routerLink="/dashboard/archive" routerLinkActive="active">
-    📦 <span>Archive</span>
+    <span class="material-icons">archive</span>
+    <span class="text">Archive</span>
   </div>
 
   <div class="item" routerLink="/dashboard/trash" routerLinkActive="active">
-    🗑️ <span>Trash</span>
+    <span class="material-icons">delete</span>
+    <span class="text">Trash</span>
   </div>
 
 </div>

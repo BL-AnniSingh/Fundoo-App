@@ -53,12 +53,14 @@ export class NotesComponent implements OnInit {
 
   // ARCHIVE
   archiveNote(id: string) {
-    this.notes = this.notes.filter(n => (n._id || n.id) !== id);
 
-    this.noteService.archiveNote(id).subscribe({
-      error: () => this.getNotes()
-    });
-  }
+  this.notes = this.notes.filter(n => (n._id || n.id) !== id);
+
+  this.noteService.archiveNote(id).subscribe({
+    next: () => this.getNotes(),
+    error: () => this.getNotes()
+  });
+}
 
   // REMINDER
   setReminder(id: string) {

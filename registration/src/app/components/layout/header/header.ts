@@ -1,42 +1,46 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './header.html',
   styleUrls: ['./header.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   @Output() toggleSidebar = new EventEmitter<void>();
-  @Output() refreshNotes = new EventEmitter<void>();
-  @Output() searchNotes = new EventEmitter<string>();
-  @Output() toggleViewEvent = new EventEmitter<boolean>();
 
   searchText: string = '';
-  isGrid = true;
+  isGrid: boolean = true;
 
-  // 🔥 ADD THIS METHOD
-  onToggleSidebar() {
-    this.toggleSidebar.emit();
-  }
+  userImage: string | null = null;
+  userInitial: string = 'A';
 
-  refresh() {
-    this.refreshNotes.emit();
+  ngOnInit() {
+    const saved = localStorage.getItem('viewMode');
+    this.isGrid = saved !== 'list';
+
+    // Demo profile
+    this.userImage = 'https://i.pravatar.cc/150?img=5';
   }
 
   onSearch() {
-    this.searchNotes.emit(this.searchText);
+    console.log("Search:", this.searchText);
   }
 
   toggleView() {
     this.isGrid = !this.isGrid;
-    this.toggleViewEvent.emit(this.isGrid);
+    localStorage.setItem('viewMode', this.isGrid ? 'grid' : 'list');
+  }
+
+  refresh() {
+    location.reload();
   }
 
   toggleSettings() {
-    alert("Settings clicked (you can open modal here)");
+    console.log("Settings clicked");
   }
 }

@@ -11,4 +11,9 @@ import { RouterModule } from '@angular/router';
 })
 export class SidenavComponent {
   @Input() isOpen: boolean = true;
+  isHovered: boolean = false;
+
+  openEditLabels() {
+  console.log("Edit labels clicked");
+}
 }
