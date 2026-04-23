@@ -1,0 +1,107 @@
+/* Container */
+.dashboard {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Note Input Box */
+.note-input {
+  width: 600px;
+  background: #303134;
+  border: 1px solid #5f6368;
+  border-radius: 10px;
+  padding: 12px;
+  color: white;
+  cursor: text;
+  transition: 0.2s;
+}
+
+/* Hover effect (like Google Keep) */
+.note-input:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Inputs */
+.note-input input,
+.note-input textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  font-size: 14px;
+}
+
+/* Title input */
+.note-input input {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Textarea */
+textarea {
+  resize: none;
+  min-height: 30px;
+}
+
+/* Actions (icons + close) */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Icons section */
+.actions .icons span {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Close button */
+.actions button {
+  background: transparent;
+  border: none;
+  color: #8ab4f8;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Notes grid */
+.notes {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Note card */
+.note-card {
+  width: 250px;
+  background: #303134;
+  border: 1px solid #5f6368;
+  border-radius: 10px;
+  padding: 15px;
+  color: white;
+  transition: 0.2s;
+}
+
+/* Card hover */
+.note-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Title */
+.note-card h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+/* Description */
+.note-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #e8eaed;
+}

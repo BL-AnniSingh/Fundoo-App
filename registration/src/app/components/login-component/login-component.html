@@ -1,0 +1,40 @@
+<div class="main-container">
+  <div class="card">
+
+    <!-- Google Logo -->
+    <h2 class="logo">
+      <span class="g1">G</span><span class="g2">o</span><span class="g3">o</span>
+      <span class="g4">g</span><span class="g5">l</span><span class="g6">e</span>
+    </h2>
+
+    <h3>Login</h3>
+    <p class="sub-text">Use your Google Account</p>
+
+    <!-- Reactive Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <!-- Email -->
+      <input 
+        type="text"
+        formControlName="email"
+        placeholder="Email or phone"
+      />
+
+      <!-- Password -->
+      <input 
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+      />
+
+      <a class="forgot">Forgot Password?</a>
+
+      <div class="bottom">
+        <a class="create" (click)="goToRegistration()">Create account</a>
+        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

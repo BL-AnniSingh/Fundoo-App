@@ -1,0 +1,72 @@
+<div class="main-container">
+
+  <div class="card">
+
+    <!-- LEFT -->
+    <div class="left">
+
+      <div class="logo">Google</div>
+
+      <h2>Create your Google Account</h2>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <!-- Name -->
+        <div class="row">
+          <input type="text" formControlName="firstName" placeholder="First name"
+                 (blur)="showFieldError('firstName')">
+
+          <input type="text" formControlName="lastName" placeholder="Last name"
+                 (blur)="showFieldError('lastName')">
+        </div>
+
+        <!-- Email -->
+        <input type="email" formControlName="email" placeholder="Email"
+               (blur)="showFieldError('email')">
+
+        <small>You can use letters, numbers & special characters</small>
+
+        <p class="link">Use my current email instead</p>
+
+        <!-- Password -->
+        <div class="row">
+          <input 
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="Password"
+            (blur)="showFieldError('password')">
+
+          <input 
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="confirmPassword"
+            placeholder="Confirm"
+            (blur)="showFieldError('confirmPassword')">
+        </div>
+
+        <small>Use 8 or more characters with a mix of letters, numbers & symbols</small>
+
+        <!-- Show Password -->
+        <div class="checkbox">
+          <input type="checkbox" id="showPass" (change)="togglePassword()">
+          <label for="showPass">Show password</label>
+        </div>
+
+        <!-- Bottom -->
+        <div class="bottom">
+          <a class="signin" (click)="goToLogin()">Sign in instead</a>
+          <button type="submit" [disabled]="registerForm.invalid">Next</button>
+        </div>
+
+      </form>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+      <img src="https://ssl.gstatic.com/accounts/signup/glif/account.svg" alt="google">
+      <p>One account. All of Google working for you.</p>
+    </div>
+
+  </div>
+
+</div>

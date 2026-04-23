@@ -1,0 +1,36 @@
+<div class="header">
+
+  <!-- LEFT -->
+  <div class="left">
+    <span class="material-icons menu" (click)="toggleSidebar.emit()">menu</span>
+    <span class="logo">Keep</span>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="search">
+    <input 
+      type="text" 
+      placeholder="Search"
+      [(ngModel)]="searchText"
+      (input)="onSearch()" />
+  </div>
+
+  <!-- RIGHT ICONS -->
+  <div class="right">
+
+    <!-- Refresh -->
+    <span class="material-icons" (click)="refresh()">refresh</span>
+
+    <!-- Grid Toggle -->
+    <!-- <span class="material-icons" (click)="toggleView()">
+      {{ isGrid ? 'view_agenda' : 'grid_view' }}
+    </span> -->
+
+    <span class="material-icons menu" (click)="onToggleSidebar()">menu</span>
+
+    <!-- Settings -->
+    <span class="material-icons" (click)="toggleSettings()">settings</span>
+
+  </div>
+
+</div>

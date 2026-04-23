@@ -1,0 +1,9 @@
+ <app-header (menuClick)="toggleSidebar()"></app-header>
+
+<div class="layout">
+  <app-sidenav [isOpen]="isSidebarOpen"></app-sidenav>
+
+  <div class="content">
+    <router-outlet></router-outlet>  
+   </div>
+</div> 

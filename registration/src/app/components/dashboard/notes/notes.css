@@ -1,0 +1,23 @@
+
+
+/* .notes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+} */
+
+/* .notes-grid {
+  padding: 20px;
+} */
+
+.notes-grid {
+  display: flex;
+
+  flex-direction: row;   /* 🔥 horizontal */
+  flex-wrap: wrap;      /* 🔥 move to next line when space ends */
+
+  gap: 20px;
+
+  padding: 20px;
+}

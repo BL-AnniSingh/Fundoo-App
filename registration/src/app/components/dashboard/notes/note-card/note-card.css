@@ -1,0 +1,108 @@
+.note-card {
+  padding: 12px;
+  border-radius: 10px;
+  margin: 10px;
+  
+
+  /* 🔥 IMPORTANT FIX */
+  color: #000; /* black text */
+}
+
+/* text */
+.note-card h3 {
+  color: #000;
+}
+
+.note-card .desc {
+  color: #333;
+}
+
+/* icons */
+.material-icons {
+  color: #000; /* 🔥 must be black */
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.material-icons:hover {
+  opacity: 1;
+}
+
+/* color dots */
+.color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+.notes-grid {
+  display: flex;
+  flex-wrap: wrap;     /* 🔥 allows next row */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* each card size */
+app-note-card {
+  width: 250px;
+}
+.note-card {
+  width: 250px;   /* 🔥 required for proper layout */
+}
+.desc {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.note-card h3 {
+  word-break: break-word;
+}
+.note-card {
+  width: 250px;        /* 🔥 VERY IMPORTANT */
+  max-width: 250px;    /* prevents stretching */
+}
+
+/* description text */
+.desc {
+  white-space: pre-line; /* preserves Enter/newline */
+  line-height: 1.5;
+}
+
+/* title */
+.note-card {
+  width: 250px;
+  max-width: 250px;
+
+  overflow: hidden;   /* prevents spill */
+}
+.color-palette-popup {
+  position: absolute;
+  bottom: 35px;   /* 👈 moves above icons */
+  left: 0;
+  background: #2d2d2d;
+  padding: 6px;
+  border-radius: 8px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  width: 150px;   /* 👈 smaller */
+  z-index: 100;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.color {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+.note-card {
+  position: relative;
+}

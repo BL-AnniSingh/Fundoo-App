@@ -1,0 +1,22 @@
+.sidenav {
+  width: 240px;
+  background: #202124;
+  color: white;
+  height: 100vh;
+  transition: 0.3s;
+}
+
+.sidenav.closed {
+  width: 70px;
+}
+
+.item {
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.item:hover,
+.item.active {
+  background: #41331c;
+  border-radius: 0 20px 20px 0;
+}

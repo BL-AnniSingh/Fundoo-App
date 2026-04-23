@@ -1,0 +1,33 @@
+<div class="create-note" (click)="expand()">
+
+  <!-- TITLE -->
+  <input 
+    *ngIf="isExpanded"
+    [(ngModel)]="title"
+    placeholder="Title"
+    (click)="$event.stopPropagation()" />
+
+  <!-- TEXTAREA -->
+  <textarea 
+    [(ngModel)]="description"
+    placeholder="Take a note..."
+    (click)="expand(); $event.stopPropagation()">
+  </textarea>
+
+  <!-- ICONS -->
+  <div class="icons" *ngIf="isExpanded" (click)="$event.stopPropagation()">
+
+    <div class="left-icons">
+      <span class="material-icons">palette</span>
+      <span class="material-icons">notifications</span>
+      <span class="material-icons">person_add</span>
+      <span class="material-icons">image</span>
+      <span class="material-icons">archive</span>
+      <span class="material-icons">more_vert</span>
+    </div>
+
+    <button (click)="close()">Close</button>
+
+  </div>
+
+</div>

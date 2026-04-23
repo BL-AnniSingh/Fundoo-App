@@ -1,0 +1,63 @@
+.create-note {
+  width: 600px;
+  margin: 20px auto;
+  padding: 12px;
+  background: #202124;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* INPUT */
+.create-note input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+}
+
+/* TEXTAREA */
+.create-note textarea {
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  color: white;
+  font-size: 14px;
+}
+
+/* ICON SECTION */
+.icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LEFT ICONS */
+.left-icons {
+  display: flex;
+  gap: 15px;
+}
+
+/* ICON STYLE */
+.material-icons {
+  font-size: 20px;
+  color: #9aa0a6;
+  cursor: pointer;
+}
+
+.material-icons:hover {
+  color: white;
+}
+
+/* CLOSE BUTTON */
+button {
+  background: transparent;
+  border: none;
+  color: #8ab4f8;
+  cursor: pointer;
+  font-weight: 500;
+}
