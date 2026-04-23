@@ -21,7 +21,7 @@ export class NotesComponent implements OnInit {
     this.getNotes();
   }
 
-  // ✅ GET NOTES (hide deleted notes)
+  // GET NOTES (hide deleted notes)
   getNotes() {
     console.log("GET NOTES CALLED");
 
@@ -30,7 +30,7 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  // ✅ DELETE (move to trash)
+  // DELETE (move to trash)
   deleteNote(id: string) {
 
     this.notes = this.notes.filter(n => (n._id || n.id) !== id);
@@ -40,7 +40,7 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  // ✅ ARCHIVE
+  // ARCHIVE
   archiveNote(id: string) {
 
     this.notes = this.notes.filter(n => (n._id || n.id) !== id);
@@ -50,14 +50,14 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  // ✅ REMINDER
+  // REMINDER
   setReminder(id: string) {
     this.noteService.setReminder(id).subscribe({
       error: () => this.getNotes()
     });
   }
 
-  // ✅ ADD NOTE (Optimistic UI)
+  // ADD NOTE 
   addNote(note: any) {
 
     const tempNote = {
@@ -75,7 +75,7 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  // ✅ COLOR CHANGE
+  // COLOR CHANGE
   changeColor(event: { id: string, color: string }) {
 
     this.notes = this.notes.map(n =>
@@ -89,7 +89,7 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  // ✅ DELETE FOREVER
+  
   deleteForeverNote(id: string) {
 
     this.notes = this.notes.filter(n => (n._id || n.id) !== id);
@@ -99,12 +99,12 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  // ✅ TRACK BY
+  
   trackById(index: number, note: any) {
     return note._id || note.id || index;
   }
 
-  // 🆕 OPTIONAL: SHOW TRASH NOTES
+  //  GET TRASHED NOTES
   getTrashNotes() {
     this.noteService.getNotes().subscribe((res: any) => {
       this.notes = (res?.data?.data || []).filter((note: any) => note.isDeleted);

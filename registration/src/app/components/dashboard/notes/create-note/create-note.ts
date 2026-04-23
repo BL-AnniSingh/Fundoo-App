@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class CreateNoteComponent {
 
-  // 🔥 MOVE HERE (inside class)
+  // MOVE HERE (inside class)
   @Input() isArchived: boolean = false;
 
   title: string = '';

@@ -43,7 +43,7 @@ export class NoteService {
     });
   }
 
-  // ✅ NEW: DELETE FOREVER (Permanent delete)
+  // NEW: DELETE FOREVER (Permanent delete)
   deleteForever(id: string) {
     return this.api.postMethod('notes/deleteForeverNotes', {
       noteIdList: [id]

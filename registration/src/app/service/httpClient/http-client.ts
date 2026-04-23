@@ -10,7 +10,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  // ✅ COMMON AUTH HEADER
+  // COMMON AUTH HEADER
   private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('token') || '';
 
@@ -19,28 +19,28 @@ export class ApiService {
     });
   }
 
-  // ✅ GET
+  // GET
   getMethod(endpoint: string, headers: HttpHeaders = this.getAuthHeaders()) {
     return this.http.get(this.baseUrl + endpoint, {
       headers
     });
   }
 
-  // ✅ POST
+  //  POST
   postMethod(endpoint: string, payload: any, headers: HttpHeaders = this.getAuthHeaders()) {
     return this.http.post(this.baseUrl + endpoint, payload, {
       headers
     });
   }
 
-  // ✅ PUT
+  //  PUT
   putMethod(endpoint: string, payload: any, headers: HttpHeaders = this.getAuthHeaders()) {
     return this.http.put(this.baseUrl + endpoint, payload, {
       headers
     });
   }
 
-  // ✅ DELETE
+  //  DELETE
   deleteMethod(endpoint: string, headers: HttpHeaders = this.getAuthHeaders()) {
     return this.http.delete(this.baseUrl + endpoint, {
       headers
