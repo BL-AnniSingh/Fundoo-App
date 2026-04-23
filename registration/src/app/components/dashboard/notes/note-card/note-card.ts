@@ -18,6 +18,7 @@ export class NoteCardComponent {
   @Output() colorChange = new EventEmitter<{ id: string, color: string }>();
   @Output() deleteForever = new EventEmitter<string>();
   @Output() restore = new EventEmitter<string>();
+  @Output() edit = new EventEmitter<any>();
 
   onDelete() {
     this.delete.emit(this.note._id || this.note.id);
@@ -70,4 +71,8 @@ export class NoteCardComponent {
   //  if your input is already multiline (Enter key)
   // return text.replace(/\n/g, '<br>');
 }
+
+onEdit() {
+  this.edit.emit(this.note);
+} 
 }

@@ -1,12 +1,30 @@
 <app-create-note (noteCreated)="addNote($event)"></app-create-note>
 
 <div class="notes-grid">
-  <app-note-card
-    *ngFor="let note of notes; trackBy: trackById"
-    [note]="note"
-    (delete)="deleteNote($event)"
-    (archive)="archiveNote($event)"
-    (reminder)="setReminder($event)"
-    (colorChange)="changeColor($event)">
-  </app-note-card>
+
+  <ng-container *ngFor="let note of notes; trackBy: trackById">
+
+    <app-note-card
+      *ngIf="!selectedNote || (note._id !== selectedNote._id)"
+      [note]="note"
+      (delete)="deleteNote($event)"
+      (archive)="archiveNote($event)"
+      (reminder)="setReminder($event)"
+      (colorChange)="changeColor($event)"
+      (edit)="openEdit($event)">
+    </app-note-card>
+
+  </ng-container>
+
 </div>
+
+<!-- ✅ EDIT POPUP -->
+<app-edit-note
+  *ngIf="selectedNote"
+  [note]="selectedNote"
+  (close)="closeEdit()"
+  (archive)="archiveNote($event._id || $event.id)"
+  (delete)="deleteNote($event._id || $event.id)"
+  (reminder)="setReminder($event._id || $event.id)"
+  (colorChange)="changeColor($event)">
+</app-edit-note>

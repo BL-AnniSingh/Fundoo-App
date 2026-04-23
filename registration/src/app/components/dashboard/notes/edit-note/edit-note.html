@@ -1,0 +1,70 @@
+<div class="overlay" (click)="onClose()">
+
+  <div class="modal"
+       (click)="$event.stopPropagation()"
+       [ngStyle]="{'background-color': note?.color || '#fff'}">
+
+    <!-- TITLE -->
+    <input
+      class="title"
+      [(ngModel)]="note.title"
+      placeholder="Title" />
+
+    <!-- DESCRIPTION -->
+    <textarea
+      class="desc"
+      [(ngModel)]="note.description"
+      placeholder="Take a note...">
+    </textarea>
+
+    <!-- ACTIONS -->
+    <div class="actions">
+
+      <!-- REMINDER -->
+      <span class="material-icons"
+            title="Remind me"
+            (click)="reminder.emit(note); $event.stopPropagation()">
+        notifications
+      </span>
+
+      <!-- ARCHIVE / UNARCHIVE -->
+      <span class="material-icons"
+            [title]="note?.isArchived ? 'Unarchive' : 'Archive'"
+            (click)="archive.emit(note); $event.stopPropagation()">
+        {{ note?.isArchived ? 'unarchive' : 'archive' }}
+      </span>
+
+      <!-- DELETE -->
+      <span class="material-icons"
+            title="Delete"
+            (click)="delete.emit(note); $event.stopPropagation()">
+        delete
+      </span>
+
+      <!-- COLOR -->
+      <span class="material-icons"
+            title="Background options"
+            (click)="togglePalette(); $event.stopPropagation()">
+        palette
+      </span>
+
+      <!-- COLOR PALETTE -->
+      <div class="color-palette-popup"
+           *ngIf="showPalette"
+           (click)="$event.stopPropagation()">
+
+        <span *ngFor="let color of colors"
+              class="color"
+              [style.background]="color"
+              (click)="changeColor(color)">
+        </span>
+      </div>
+
+      <!-- ✅ CLOSE BUTTON (ADDED) -->
+      <button class="close-btn" (click)="onClose()">Close</button>
+
+    </div>
+
+  </div>
+
+</div>

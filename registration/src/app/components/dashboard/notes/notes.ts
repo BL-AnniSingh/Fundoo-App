@@ -4,10 +4,18 @@ import { NoteCardComponent } from './note-card/note-card';
 import { NoteService } from '../../../service/note/note';
 import { CreateNoteComponent } from './create-note/create-note';
 
+import { EditNoteComponent } from './edit-note/edit-note';
+
+
 @Component({
   selector: 'app-notes',
   standalone: true,
-  imports: [CommonModule, NoteCardComponent, CreateNoteComponent],
+  imports: [
+    CommonModule,
+    NoteCardComponent,
+    CreateNoteComponent,
+    EditNoteComponent
+  ],
   templateUrl: './notes.html',
   styleUrls: ['./notes.css']
 })
@@ -17,9 +25,10 @@ export class NotesComponent implements OnInit {
 
   constructor(private noteService: NoteService) {}
 
-  ngOnInit() {
-    this.getNotes();
-  }
+ngOnInit() {
+  this.getNotes();        // 🔥 REQUIRED
+  this.selectedNote = null; // safe
+}
 
   // ✅ SHOW ONLY ACTIVE NOTES
   getNotes() {
@@ -103,4 +112,14 @@ export class NotesComponent implements OnInit {
   trackById(index: number, note: any) {
     return note._id || note.id || index;
   }
+
+selectedNote: any = null;
+
+openEdit(note: any) {
+  this.selectedNote = note;
+}
+
+closeEdit() {
+  this.selectedNote = null;
+}
 }

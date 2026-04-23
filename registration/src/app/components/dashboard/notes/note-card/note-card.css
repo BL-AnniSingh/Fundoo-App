@@ -106,3 +106,24 @@ app-note-card {
 .note-card {
   position: relative;
 }
+
+.click-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.note-card h3,
+.note-card .desc {
+  position: relative;
+  z-index: 2;
+}
+
+.actions {
+  position: relative;
+  z-index: 3;
+}
+.note-content {
+  cursor: pointer;
+}
