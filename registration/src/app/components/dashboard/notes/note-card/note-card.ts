@@ -15,7 +15,9 @@ export class NoteCardComponent {
   @Output() delete = new EventEmitter<string>();
   @Output() archive = new EventEmitter<string>();
   @Output() reminder = new EventEmitter<string>();
-@Output() colorChange = new EventEmitter<{ id: string, color: string }>();
+  @Output() colorChange = new EventEmitter<{ id: string, color: string }>();
+  @Output() deleteForever = new EventEmitter<string>();
+  @Output() restore = new EventEmitter<string>();
 
   onDelete() {
     this.delete.emit(this.note._id || this.note.id);
@@ -29,38 +31,43 @@ export class NoteCardComponent {
     this.reminder.emit(this.note._id || this.note.id);
   }
 
+  onDeleteForever() {
+    this.deleteForever.emit(this.note._id || this.note.id);
+  }
+
+  onRestore() {
+    this.restore.emit(this.note._id || this.note.id);
+  }
+
   onColorChange(color: string) {
-  this.colorChange.emit({
-    id: this.note._id || this.note.id,
-    color: color
-  });
-}
-@Output() deleteForever = new EventEmitter<string>();
+    this.colorChange.emit({
+      id: this.note._id || this.note.id,
+      color: color
+    });
+  }
 
-onDeleteForever() {
-  this.deleteForever.emit(this.note._id || this.note.id);
-}
+  showPalette = false;
 
-showPalette = false;
+  colors = [
+    '#ffffff','#f28b82','#fbbc04','#ccff90',
+    '#a7ffeb','#d7aefb','#fdcfe8','#e6c9a8','#e8eaed'
+  ];
 
-colors = [
-  '#ffffff',
-  '#f28b82',
-  '#fbbc04',
-  '#ccff90',
-  '#a7ffeb',
-  '#d7aefb',
-  '#fdcfe8',
-  '#e6c9a8',
-  '#e8eaed'
-];
+  togglePalette() {
+    this.showPalette = !this.showPalette;
+  }
 
-togglePalette() {
-  this.showPalette = !this.showPalette;
-}
+  selectColor(color: string) {
+    this.onColorChange(color);
+    this.showPalette = false;
+  }
+  formatDescription(text: string) {
+  if (!text) return '';
 
-selectColor(color: string) {
-  this.onColorChange(color);
-  this.showPalette = false;
+  
+  return text.replace(/ /g, '<br>');
+
+  //  if your input is already multiline (Enter key)
+  // return text.replace(/\n/g, '<br>');
 }
 }

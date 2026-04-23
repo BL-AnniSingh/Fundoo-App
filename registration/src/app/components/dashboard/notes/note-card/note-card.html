@@ -1,36 +1,35 @@
 <div *ngIf="note" class="note-card"
      [ngStyle]="{'background-color': note.color || '#ffffff'}">
 
-  <h3 *ngIf="note.title">{{ note.title }}</h3>
+  <h3>{{ note?.title }}</h3>
 
- <p class="desc" [innerText]="note.description"></p>
+  <!-- ✅ FIXED: text line-by-line -->
+  <p class="desc" [innerHTML]="formatDescription(note?.description)"></p>
 
   <div class="actions">
-    <span class="material-icons" (click)="onReminder()">notifications</span>
-    <span class="material-icons" (click)="onArchive()">archive</span>
-    <span class="material-icons" (click)="onDelete()">delete</span>
-<span class="material-icons" (click)="onDeleteForever()">delete_forever</span>
-   
-<!-- <div class="color-palette">
-  <span class="color" style="background:#ffffff" (click)="onColorChange('#ffffff')"></span>
-  <span class="color" style="background:#f28b82" (click)="onColorChange('#f28b82')"></span>
-  <span class="color" style="background:#fbbc04" (click)="onColorChange('#fbbc04')"></span>
-  <span class="color" style="background:#ccff90" (click)="onColorChange('#ccff90')"></span>
-  <span class="color" style="background:#a7ffeb" (click)="onColorChange('#a7ffeb')"></span>
-  <span class="color" style="background:#d7aefb" (click)="onColorChange('#d7aefb')"></span>
-  <span class="color" style="background:#fdcfe8" (click)="onColorChange('#fdcfe8')"></span>
-</div> -->
 
-<span class="material-icons" (click)="togglePalette()">palette</span>
+    <!-- NORMAL -->
+    <ng-container *ngIf="!note.isDeleted">
+      <span class="material-icons" (click)="onReminder()">notifications</span>
+      <span class="material-icons" (click)="onArchive()">archive</span>
+      <span class="material-icons" (click)="onDelete()">delete</span>
 
-<div class="color-palette-popup" *ngIf="showPalette">
-  <span 
-    class="color"
-    *ngFor="let color of colors"
-    [style.background]="color"
-    (click)="selectColor(color)">
-  </span>
-</div>
+      <span class="material-icons" (click)="togglePalette()">palette</span>
+
+      <div class="color-palette-popup" *ngIf="showPalette">
+        <span *ngFor="let color of colors"
+              class="color"
+              [style.background]="color"
+              (click)="selectColor(color)">
+        </span>
+      </div>
+    </ng-container>
+
+    <!-- TRASH -->
+    <ng-container *ngIf="note.isDeleted">
+      <span class="material-icons" (click)="onRestore()">restore</span>
+      <span class="material-icons" (click)="onDeleteForever()">delete_forever</span>
+    </ng-container>
+
   </div>
-
 </div>

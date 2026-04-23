@@ -49,5 +49,11 @@ export class NoteService {
       noteIdList: [id]
     });
   }
+  restoreNote(id: string) {
+  return this.api.postMethod('notes/trashNotes', {
+    noteIdList: [id],
+    isDeleted: false
+  });
+}
 
 }

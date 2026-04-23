@@ -5,6 +5,7 @@ import { RegistrationComponent } from './components/registration/registration';
 
 import { LayoutComponent } from './components/layout/layout';
 import { DashboardComponent } from './components/dashboard/dashboard';
+import { TrashComponent } from './components/dashboard/notes/trash/trash';
 
 export const routes: Routes = [
 
@@ -21,11 +22,11 @@ export const routes: Routes = [
       // default
       { path: '', redirectTo: 'notes', pathMatch: 'full' },
 
-      // 👇 add these
+      // 
       { path: 'notes', component: DashboardComponent },
       { path: 'reminders', component: DashboardComponent },
       { path: 'archive', component: DashboardComponent },
-      { path: 'trash', component: DashboardComponent }
+      { path: 'trash', component: TrashComponent }
 
     ]
   },

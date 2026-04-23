@@ -1,0 +1,8 @@
+<div class="notes-grid">
+  <app-note-card
+    *ngFor="let note of notes"
+    [note]="note"
+    (deleteForever)="deleteForeverNote($event)"
+    (restore)="restoreNote($event)">
+  </app-note-card>
+</div>

@@ -21,28 +21,38 @@ export class NotesComponent implements OnInit {
     this.getNotes();
   }
 
-  // GET NOTES (hide deleted notes)
+  // ✅ SHOW ONLY ACTIVE NOTES
   getNotes() {
-    console.log("GET NOTES CALLED");
-
     this.noteService.getNotes().subscribe((res: any) => {
-      this.notes = (res?.data?.data || []).filter((note: any) => !note.isDeleted);
+
+      const allNotes = res?.data?.data || [];
+
+      console.log("ALL NOTES:", allNotes);
+
+      this.notes = allNotes.filter((note: any) =>
+        (note.isDeleted === false || note.isDeleted === undefined) &&
+        (note.isArchived === false || note.isArchived === undefined)
+      );
+
+      console.log("VISIBLE NOTES:", this.notes);
     });
   }
 
-  // DELETE (move to trash)
+  // DELETE → MOVE TO TRASH
   deleteNote(id: string) {
 
-    this.notes = this.notes.filter(n => (n._id || n.id) !== id);
+  // remove instantly from UI
+  this.notes = this.notes.filter(n => (n._id || n.id) !== id);
 
-    this.noteService.deleteNote(id).subscribe({
-      error: () => this.getNotes()
-    });
-  }
+  // call API + refresh
+  this.noteService.deleteNote(id).subscribe({
+    next: () => this.getNotes(),   
+    error: () => this.getNotes()
+  });
+}
 
   // ARCHIVE
   archiveNote(id: string) {
-
     this.notes = this.notes.filter(n => (n._id || n.id) !== id);
 
     this.noteService.archiveNote(id).subscribe({
@@ -57,7 +67,7 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  // ADD NOTE 
+  // ADD NOTE
   addNote(note: any) {
 
     const tempNote = {
@@ -75,9 +85,8 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  // COLOR CHANGE
+  // COLOR
   changeColor(event: { id: string, color: string }) {
-
     this.notes = this.notes.map(n =>
       (n._id || n.id) === event.id
         ? { ...n, color: event.color }
@@ -89,26 +98,7 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  
-  deleteForeverNote(id: string) {
-
-    this.notes = this.notes.filter(n => (n._id || n.id) !== id);
-
-    this.noteService.deleteForever(id).subscribe({
-      error: () => this.getNotes()
-    });
-  }
-
-  
   trackById(index: number, note: any) {
     return note._id || note.id || index;
   }
-
-  //  GET TRASHED NOTES
-  getTrashNotes() {
-    this.noteService.getNotes().subscribe((res: any) => {
-      this.notes = (res?.data?.data || []).filter((note: any) => note.isDeleted);
-    });
-  }
-
 }
