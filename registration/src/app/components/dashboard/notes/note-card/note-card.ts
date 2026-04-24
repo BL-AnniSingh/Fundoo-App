@@ -50,8 +50,10 @@ export class NoteCardComponent {
   showPalette = false;
 
   colors = [
-    '#ffffff','#f28b82','#fbbc04','#ccff90',
-    '#a7ffeb','#d7aefb','#fdcfe8','#e6c9a8','#e8eaed'
+    '#ffffff','#f28b82','#a2915f','#c6f196',
+    '#90d7c6','#b895d7','#fdcfe8','#d1b28f','#c0cad8', '#e6f0ff',  
+'#fff4cc', 
+'#e8ffe8'
   ];
 
   togglePalette() {

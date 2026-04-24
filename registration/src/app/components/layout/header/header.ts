@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 export class HeaderComponent implements OnInit {
 
   @Output() toggleSidebar = new EventEmitter<void>();
+  @Output() toggleViewEvent = new EventEmitter<void>();
 
   searchText: string = '';
   isGrid: boolean = true;
@@ -23,7 +24,6 @@ export class HeaderComponent implements OnInit {
     const saved = localStorage.getItem('viewMode');
     this.isGrid = saved !== 'list';
 
-    // Demo profile
     this.userImage = 'https://i.pravatar.cc/150?img=5';
   }
 
@@ -31,16 +31,18 @@ export class HeaderComponent implements OnInit {
     console.log("Search:", this.searchText);
   }
 
-  toggleView() {
+  // 🔥 ONLY THIS SHOULD HANDLE TOGGLE
+  onToggleView() {
     this.isGrid = !this.isGrid;
+
+    // save preference
     localStorage.setItem('viewMode', this.isGrid ? 'grid' : 'list');
+
+    // notify dashboard
+    this.toggleViewEvent.emit();
   }
 
   refresh() {
     location.reload();
-  }
-
-  toggleSettings() {
-    console.log("Settings clicked");
   }
 }

@@ -2,7 +2,7 @@
      class="note-card"
      [ngStyle]="{'background-color': note.color || '#ffffff'}">
 
-  <!-- ✅ ONLY THIS SHOULD TRIGGER EDIT -->
+  <!--  ONLY THIS SHOULD TRIGGER EDIT -->
   <div class="note-content" (click)="onEdit()">
     <h3>{{ note?.title }}</h3>
     <p class="desc" [innerHTML]="formatDescription(note?.description)"></p>
@@ -28,7 +28,7 @@
         delete
       </span>
 
-      <!-- ✅ FIXED -->
+      <!--  FIXED -->
       <span class="material-icons"
             (click)="togglePalette(); $event.stopPropagation()">
         palette

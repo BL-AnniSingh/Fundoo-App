@@ -31,10 +31,11 @@
 
     <!-- Grid/List -->
     <span class="material-icons icon"
-          title="Toggle view"
-          (click)="toggleView()">
-      {{ isGrid ? 'view_agenda' : 'grid_view' }}
-    </span>
+      title="Toggle view"
+      (click)="onToggleView()"
+      style="cursor:pointer">
+  {{ isGrid ? 'view_agenda' : 'grid_view' }}
+</span>
 
     <!-- Settings -->
     <span class="material-icons icon" title="Settings" (click)="toggleSettings()">
@@ -55,6 +56,9 @@
       </ng-template>
     </div>
 
+    
+
   </div>
+  
 
 </div>

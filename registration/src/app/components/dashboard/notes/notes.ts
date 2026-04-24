@@ -26,11 +26,11 @@ export class NotesComponent implements OnInit {
   constructor(private noteService: NoteService) {}
 
 ngOnInit() {
-  this.getNotes();        // 🔥 REQUIRED
+  this.getNotes();        //  REQUIRED
   this.selectedNote = null; // safe
 }
 
-  // ✅ SHOW ONLY ACTIVE NOTES
+  // SHOW ONLY ACTIVE NOTES
   getNotes() {
     this.noteService.getNotes().subscribe((res: any) => {
 
@@ -122,4 +122,11 @@ openEdit(note: any) {
 closeEdit() {
   this.selectedNote = null;
 }
+
+isGridView: boolean = true;
+
+toggleView() {
+  this.isGridView = !this.isGridView;
+}
+
 }

@@ -9,4 +9,10 @@ import { NotesComponent } from './notes/notes';
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.css']
 })
-export class DashboardComponent {}
+export class DashboardComponent {
+  isGridView: boolean = true;
+
+toggleView() {
+  this.isGridView = !this.isGridView;
+}
+}
